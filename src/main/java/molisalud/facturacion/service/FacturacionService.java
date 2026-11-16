@@ -1,10 +1,20 @@
 package molisalud.facturacion.service;
 
-import java.io.*;
-import java.util.*;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import molisalud.facturacion.beans.FacturacionBean;
+import molisalud.facturacion.beans.PagoBean;
+import molisalud.facturacion.beans.TarifarioBean;
 
 /**
- * Implementa IFacturacionService. Las operaciones del contrato están definidas en la interfaz y la extensión Java genera sus implementaciones aquí. Mantener objDAO solo en esta clase. Implementar validaciones y delegación al DAO.
+ * Implementa IFacturacionService. Valida los datos, completa fechas y delega al DAO.
+ * Los errores de regla se informan con IllegalArgumentException / IllegalStateException (mensaje apto para el usuario).
  */
 public class FacturacionService implements IFacturacionService {
 
@@ -14,61 +24,85 @@ public class FacturacionService implements IFacturacionService {
     public FacturacionService() {
     }
 
-    /**
-     * 
-     */
     private molisalud.facturacion.dao.FacturacionDAO objDAO = new molisalud.facturacion.dao.FacturacionDAO();
 
-    /**
-     * @return
-     */
-    public java.util.ArrayList<molisalud.facturacion.beans.TarifarioBean> getTarifario() {
-        // TODO implement here
-        return null;
+    private static final ZoneId ZONA = ZoneId.of("America/Lima");
+    private static final List<String> METODOS = Arrays.asList("Efectivo", "Tarjeta (POS)", "Transferencia");
+
+    private static void validarMetodo(String metodoPago) {
+        if (metodoPago == null || !METODOS.contains(metodoPago)) {
+            throw new IllegalArgumentException("Método de pago no válido. Use: Efectivo, Tarjeta (POS) o Transferencia.");
+        }
     }
 
-    /**
-     * Facturar la cita con el servicio seleccionado del tarifario; registrar pago y comprobante en una transacción. No es integración con SUNAT ni pasarela de pagos.
-     * @param idCita 
-     * @param idServicio 
-     * @param metodoPago
-     */
+    private static void validarCitaYServicio(int idCita, int idServicio) {
+        if (idCita <= 0) {
+            throw new IllegalArgumentException("Indique la cita que se facturará.");
+        }
+        if (idServicio <= 0) {
+            throw new IllegalArgumentException("Indique el servicio del tarifario.");
+        }
+    }
+
+    public ArrayList<TarifarioBean> getTarifario() {
+        return objDAO.getTarifario();
+    }
+
+    /** Pago + comprobante en una sola transacción, con el precio del tarifario. */
     public void facturarAtencion(int idCita, int idServicio, String metodoPago) {
-        // TODO implement here
+        validarCitaYServicio(idCita, idServicio);
+        validarMetodo(metodoPago);
+        objDAO.facturarAtencion(idCita, idServicio, metodoPago);
     }
 
-    /**
-     * @param p
-     */
-    public void registrarPago(molisalud.facturacion.beans.PagoBean p) {
-        // TODO implement here
+    /** Registra solo el pago (fecha y hora actuales; el monto sale del tarifario). */
+    public void registrarPago(PagoBean p) {
+        if (p == null) {
+            throw new IllegalArgumentException("Faltan los datos del pago.");
+        }
+        validarCitaYServicio(p.getIdCita(), p.getIdServicio());
+        validarMetodo(p.getMetodoPago());
+        p.setFechaPago(LocalDateTime.now(ZONA));
+        objDAO.registrarPago(p);
     }
 
-    /**
-     * @param c
-     */
-    public void emitirComprobante(molisalud.facturacion.beans.FacturacionBean c) {
-        // TODO implement here
+    /** Emite el comprobante de un pago existente (fecha de hoy; importes desde el pago). */
+    public void emitirComprobante(FacturacionBean c) {
+        if (c == null || c.getIdPago() <= 0) {
+            throw new IllegalArgumentException("Indique el pago del comprobante.");
+        }
+        c.setFechaEmision(LocalDate.now(ZONA));
+        objDAO.emitirComprobante(c);
     }
 
-    /**
-     * @param p
-     */
-    public void agregarPago(molisalud.facturacion.beans.PagoBean p) {
-        // TODO implement here
+    /** Inserta un pago con los importes recibidos (monto obligatorio y mayor que cero). */
+    public void agregarPago(PagoBean p) {
+        if (p == null) {
+            throw new IllegalArgumentException("Faltan los datos del pago.");
+        }
+        validarCitaYServicio(p.getIdCita(), p.getIdServicio());
+        validarMetodo(p.getMetodoPago());
+        if (p.getMonto() == null || p.getMonto().compareTo(BigDecimal.ZERO) <= 0) {
+            throw new IllegalArgumentException("El monto debe ser mayor que cero.");
+        }
+        if (p.getFechaPago() == null) {
+            p.setFechaPago(LocalDateTime.now(ZONA));
+        }
+        objDAO.agregarPago(p);
     }
 
-    /**
-     * @param c
-     */
-    public void agregarComprobante(molisalud.facturacion.beans.FacturacionBean c) {
-        // TODO implement here
+    /** Inserta un comprobante con los importes recibidos (0 < subtotal <= total). */
+    public void agregarComprobante(FacturacionBean c) {
+        if (c == null || c.getIdPago() <= 0) {
+            throw new IllegalArgumentException("Indique el pago del comprobante.");
+        }
+        if (c.getSubtotal() == null || c.getTotal() == null
+                || c.getSubtotal().compareTo(BigDecimal.ZERO) <= 0 || c.getSubtotal().compareTo(c.getTotal()) > 0) {
+            throw new IllegalArgumentException("Los importes deben cumplir: 0 < subtotal ≤ total.");
+        }
+        if (c.getFechaEmision() == null) {
+            c.setFechaEmision(LocalDate.now(ZONA));
+        }
+        objDAO.agregarComprobante(c);
     }
-
-
-
-
-
-
-
 }

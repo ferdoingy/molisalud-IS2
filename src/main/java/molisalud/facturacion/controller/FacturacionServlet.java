@@ -1,13 +1,23 @@
 package molisalud.facturacion.controller;
 
-import javax.servlet.http.HttpServlet;
+import java.io.IOException;
+import java.util.ArrayList;
 
-import java.io.*;
-import java.util.*;
+import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import molisalud.facturacion.beans.TarifarioBean;
+import molisalud.login.beans.UsuarioBean;
 
 /**
- * Controlador HTTP basado en javax.servlet 4.0.1. Configurar la ruta con WebServlet o web.xml al implementar. Validar permisos del usuario antes de delegar al servicio.
+ * Controlador HTTP de Facturación (ruta /facturacion). Solo el Cajero factura, según el modelo.
+ * La pantalla usa facturarAtencion (pago y comprobante en una transacción).
  */
+@WebServlet("/facturacion")
 public class FacturacionServlet extends HttpServlet {
 
     /**
@@ -16,27 +26,84 @@ public class FacturacionServlet extends HttpServlet {
     public FacturacionServlet() {
     }
 
-    /**
-     * 
-     */
     private molisalud.facturacion.service.IFacturacionService service = new molisalud.facturacion.service.FacturacionService();
 
-    /**
-     * Procesar la solicitud HTTP y delegar al servicio. Implementar manejo de excepciones y navegación cuando se construyan las vistas.
-     * @param request 
-     * @param response
-     */
-    protected void doGet(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) {
-        // TODO implement here
+    private static final String CAJERO = "Cajero";
+
+    private UsuarioBean usuarioEnSesion(HttpServletRequest request, HttpServletResponse response) throws IOException {
+        HttpSession sesion = request.getSession(false);
+        UsuarioBean u = sesion == null ? null : (UsuarioBean) sesion.getAttribute("usuario");
+        if (u == null) {
+            response.sendRedirect(request.getContextPath() + "/login");
+        }
+        return u;
     }
 
-    /**
-     * Procesar la solicitud HTTP y delegar al servicio. Implementar manejo de excepciones y navegación cuando se construyan las vistas.
-     * @param request 
-     * @param response
-     */
-    protected void doPost(javax.servlet.http.HttpServletRequest request, javax.servlet.http.HttpServletResponse response) {
-        // TODO implement here
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        UsuarioBean u = usuarioEnSesion(request, response);
+        if (u == null) {
+            return;
+        }
+        if (!CAJERO.equals(u.getRol())) {
+            response.sendError(HttpServletResponse.SC_FORBIDDEN, "Solo el Cajero puede facturar.");
+            return;
+        }
+        HttpSession sesion = request.getSession();
+        for (String clave : new String[] {"mensaje", "error"}) {
+            request.setAttribute(clave, sesion.getAttribute(clave));
+            sesion.removeAttribute(clave);
+        }
+        try {
+            request.setAttribute("tarifario", service.getTarifario());
+        } catch (RuntimeException e) {
+            log("Error al consultar el tarifario", e);
+            request.setAttribute("error", "No se pudo consultar el tarifario. Intente de nuevo.");
+            request.setAttribute("tarifario", new ArrayList<TarifarioBean>());
+        }
+        request.getRequestDispatcher("/facturacion.jsp").forward(request, response);
     }
 
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        UsuarioBean u = usuarioEnSesion(request, response);
+        if (u == null) {
+            return;
+        }
+        request.setCharacterEncoding("UTF-8");
+        HttpSession sesion = request.getSession();
+        try {
+            if (!CAJERO.equals(u.getRol())) {
+                sesion.setAttribute("error", "Solo el Cajero puede facturar.");
+            } else if ("facturar".equals(request.getParameter("accion"))) {
+                int idCita = entero(request.getParameter("idCita"));
+                int idServicio = entero(request.getParameter("idServicio"));
+                service.facturarAtencion(idCita, idServicio, request.getParameter("metodoPago"));
+                String detalle = "";
+                for (TarifarioBean t : service.getTarifario()) {
+                    if (t.getIdServicio() == idServicio) {
+                        detalle = " Servicio: " + t.getNombreServicio() + " - Total cobrado: S/ " + t.getPrecio() + ".";
+                    }
+                }
+                sesion.setAttribute("mensaje", "Atención de la cita Nº " + idCita
+                        + " facturada: pago registrado y comprobante emitido." + detalle);
+            } else {
+                sesion.setAttribute("error", "Acción no reconocida.");
+            }
+        } catch (NumberFormatException e) {
+            sesion.setAttribute("error", "Datos inválidos: revise los números ingresados.");
+        } catch (IllegalArgumentException | IllegalStateException e) {
+            sesion.setAttribute("error", e.getMessage());
+        } catch (RuntimeException e) {
+            log("Error al facturar", e);
+            sesion.setAttribute("error", "No se pudo completar la operación. Intente de nuevo.");
+        }
+        response.sendRedirect(request.getContextPath() + "/facturacion");
+    }
+
+    private static int entero(String s) {
+        return s == null || s.trim().isEmpty() ? 0 : Integer.parseInt(s.trim());
+    }
 }
