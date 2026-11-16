@@ -33,6 +33,9 @@
                if ("Recepcionista".equals(rolActual) || "Médico".equals(rolActual) || "Administrador de la clínica".equals(rolActual)) { %>
             <li><a href="<%= request.getContextPath() %>/horarios">Horarios médicos</a></li>
             <% } %>
+            <% if ("Recepcionista".equals(rolActual)) { %>
+            <li><a href="<%= request.getContextPath() %>/reservas">Reservas de citas</a></li>
+            <% } %>
         </ul>
     </main>
 </body>
