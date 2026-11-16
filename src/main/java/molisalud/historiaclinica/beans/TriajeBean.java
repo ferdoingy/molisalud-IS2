@@ -58,120 +58,112 @@ public class TriajeBean {
      * @return
      */
     public int getIdTriaje() {
-        // TODO implement here
-        return 0;
+        return this.idTriaje;
     }
 
     /**
      * @param idTriaje
      */
     public void setIdTriaje(int idTriaje) {
-        // TODO implement here
+        this.idTriaje = idTriaje;
     }
 
     /**
      * @return
      */
     public int getIdHistoria() {
-        // TODO implement here
-        return 0;
+        return this.idHistoria;
     }
 
     /**
      * @param idHistoria
      */
     public void setIdHistoria(int idHistoria) {
-        // TODO implement here
+        this.idHistoria = idHistoria;
     }
 
     /**
      * @return
      */
     public int getIdCita() {
-        // TODO implement here
-        return 0;
+        return this.idCita;
     }
 
     /**
      * @param idCita
      */
     public void setIdCita(int idCita) {
-        // TODO implement here
+        this.idCita = idCita;
     }
 
     /**
      * @return
      */
     public java.time.LocalDateTime getFecha() {
-        // TODO implement here
-        return null;
+        return this.fecha;
     }
 
     /**
      * @param fecha
      */
     public void setFecha(java.time.LocalDateTime fecha) {
-        // TODO implement here
+        this.fecha = fecha;
     }
 
     /**
      * @return
      */
     public java.math.BigDecimal getTemperatura() {
-        // TODO implement here
-        return null;
+        return this.temperatura;
     }
 
     /**
      * @param temperatura
      */
     public void setTemperatura(java.math.BigDecimal temperatura) {
-        // TODO implement here
+        this.temperatura = temperatura;
     }
 
     /**
      * @return
      */
     public java.math.BigDecimal getPeso() {
-        // TODO implement here
-        return null;
+        return this.peso;
     }
 
     /**
      * @param peso
      */
     public void setPeso(java.math.BigDecimal peso) {
-        // TODO implement here
+        this.peso = peso;
     }
 
     /**
      * @return
      */
     public java.math.BigDecimal getTalla() {
-        // TODO implement here
-        return null;
+        return this.talla;
     }
 
     /**
      * @param talla
      */
     public void setTalla(java.math.BigDecimal talla) {
-        // TODO implement here
+        this.talla = talla;
     }
 
     /**
      * @return
      */
     public String getPresionArterial() {
-        // TODO implement here
-        return "";
+        return this.presionArterial;
     }
 
     /**
      * @param presionArterial
      */
     public void setPresionArterial(String presionArterial) {
-        // TODO implement here
+        this.presionArterial = presionArterial;
     }
 
     /**
@@ -185,7 +177,14 @@ public class TriajeBean {
      * @param presionArterial
      */
     public TriajeBean(int idTriaje, int idHistoria, int idCita, java.time.LocalDateTime fecha, java.math.BigDecimal temperatura, java.math.BigDecimal peso, java.math.BigDecimal talla, String presionArterial) {
-        // TODO implement here
+        this.idTriaje = idTriaje;
+        this.idHistoria = idHistoria;
+        this.idCita = idCita;
+        this.fecha = fecha;
+        this.temperatura = temperatura;
+        this.peso = peso;
+        this.talla = talla;
+        this.presionArterial = presionArterial;
     }
 
 }

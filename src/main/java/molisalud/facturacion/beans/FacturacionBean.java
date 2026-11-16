@@ -43,75 +43,70 @@ public class FacturacionBean {
      * @return
      */
     public int getIdComprobante() {
-        // TODO implement here
-        return 0;
+        return this.idComprobante;
     }
 
     /**
      * @param idComprobante
      */
     public void setIdComprobante(int idComprobante) {
-        // TODO implement here
+        this.idComprobante = idComprobante;
     }
 
     /**
      * @return
      */
     public int getIdPago() {
-        // TODO implement here
-        return 0;
+        return this.idPago;
     }
 
     /**
      * @param idPago
      */
     public void setIdPago(int idPago) {
-        // TODO implement here
+        this.idPago = idPago;
     }
 
     /**
      * @return
      */
     public java.time.LocalDate getFechaEmision() {
-        // TODO implement here
-        return null;
+        return this.fechaEmision;
     }
 
     /**
      * @param fechaEmision
      */
     public void setFechaEmision(java.time.LocalDate fechaEmision) {
-        // TODO implement here
+        this.fechaEmision = fechaEmision;
     }
 
     /**
      * @return
      */
     public java.math.BigDecimal getSubtotal() {
-        // TODO implement here
-        return null;
+        return this.subtotal;
     }
 
     /**
      * @param subtotal
      */
     public void setSubtotal(java.math.BigDecimal subtotal) {
-        // TODO implement here
+        this.subtotal = subtotal;
     }
 
     /**
      * @return
      */
     public java.math.BigDecimal getTotal() {
-        // TODO implement here
-        return null;
+        return this.total;
     }
 
     /**
      * @param total
      */
     public void setTotal(java.math.BigDecimal total) {
-        // TODO implement here
+        this.total = total;
     }
 
     /**
@@ -122,7 +117,11 @@ public class FacturacionBean {
      * @param total
      */
     public FacturacionBean(int idComprobante, int idPago, java.time.LocalDate fechaEmision, java.math.BigDecimal subtotal, java.math.BigDecimal total) {
-        // TODO implement here
+        this.idComprobante = idComprobante;
+        this.idPago = idPago;
+        this.fechaEmision = fechaEmision;
+        this.subtotal = subtotal;
+        this.total = total;
     }
 
 }

@@ -33,45 +33,42 @@ public class DiagnosticoBean {
      * @return
      */
     public int getIdDiagnostico() {
-        // TODO implement here
-        return 0;
+        return this.idDiagnostico;
     }
 
     /**
      * @param idDiagnostico
      */
     public void setIdDiagnostico(int idDiagnostico) {
-        // TODO implement here
+        this.idDiagnostico = idDiagnostico;
     }
 
     /**
      * @return
      */
     public int getIdConsulta() {
-        // TODO implement here
-        return 0;
+        return this.idConsulta;
     }
 
     /**
      * @param idConsulta
      */
     public void setIdConsulta(int idConsulta) {
-        // TODO implement here
+        this.idConsulta = idConsulta;
     }
 
     /**
      * @return
      */
     public String getDescripcion() {
-        // TODO implement here
-        return "";
+        return this.descripcion;
     }
 
     /**
      * @param descripcion
      */
     public void setDescripcion(String descripcion) {
-        // TODO implement here
+        this.descripcion = descripcion;
     }
 
     /**
@@ -80,7 +77,9 @@ public class DiagnosticoBean {
      * @param descripcion
      */
     public DiagnosticoBean(int idDiagnostico, int idConsulta, String descripcion) {
-        // TODO implement here
+        this.idDiagnostico = idDiagnostico;
+        this.idConsulta = idConsulta;
+        this.descripcion = descripcion;
     }
 
 }

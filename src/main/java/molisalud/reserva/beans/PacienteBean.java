@@ -53,105 +53,98 @@ public class PacienteBean {
      * @return
      */
     public int getIdPaciente() {
-        // TODO implement here
-        return 0;
+        return this.idPaciente;
     }
 
     /**
      * @param idPaciente
      */
     public void setIdPaciente(int idPaciente) {
-        // TODO implement here
+        this.idPaciente = idPaciente;
     }
 
     /**
      * @return
      */
     public String getDni() {
-        // TODO implement here
-        return "";
+        return this.dni;
     }
 
     /**
      * @param dni
      */
     public void setDni(String dni) {
-        // TODO implement here
+        this.dni = dni;
     }
 
     /**
      * @return
      */
     public String getNombres() {
-        // TODO implement here
-        return "";
+        return this.nombres;
     }
 
     /**
      * @param nombres
      */
     public void setNombres(String nombres) {
-        // TODO implement here
+        this.nombres = nombres;
     }
 
     /**
      * @return
      */
     public String getApellidos() {
-        // TODO implement here
-        return "";
+        return this.apellidos;
     }
 
     /**
      * @param apellidos
      */
     public void setApellidos(String apellidos) {
-        // TODO implement here
+        this.apellidos = apellidos;
     }
 
     /**
      * @return
      */
     public String getTelefono() {
-        // TODO implement here
-        return "";
+        return this.telefono;
     }
 
     /**
      * @param telefono
      */
     public void setTelefono(String telefono) {
-        // TODO implement here
+        this.telefono = telefono;
     }
 
     /**
      * @return
      */
     public String getCorreo() {
-        // TODO implement here
-        return "";
+        return this.correo;
     }
 
     /**
      * @param correo
      */
     public void setCorreo(String correo) {
-        // TODO implement here
+        this.correo = correo;
     }
 
     /**
      * @return
      */
     public String getDireccion() {
-        // TODO implement here
-        return "";
+        return this.direccion;
     }
 
     /**
      * @param direccion
      */
     public void setDireccion(String direccion) {
-        // TODO implement here
+        this.direccion = direccion;
     }
 
     /**
@@ -164,7 +157,13 @@ public class PacienteBean {
      * @param direccion
      */
     public PacienteBean(int idPaciente, String dni, String nombres, String apellidos, String telefono, String correo, String direccion) {
-        // TODO implement here
+        this.idPaciente = idPaciente;
+        this.dni = dni;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.telefono = telefono;
+        this.correo = correo;
+        this.direccion = direccion;
     }
 
 }

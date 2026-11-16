@@ -48,90 +48,84 @@ public class ReservaBean {
      * @return
      */
     public int getIdReserva() {
-        // TODO implement here
-        return 0;
+        return this.idReserva;
     }
 
     /**
      * @param idReserva
      */
     public void setIdReserva(int idReserva) {
-        // TODO implement here
+        this.idReserva = idReserva;
     }
 
     /**
      * @return
      */
     public int getIdHorario() {
-        // TODO implement here
-        return 0;
+        return this.idHorario;
     }
 
     /**
      * @param idHorario
      */
     public void setIdHorario(int idHorario) {
-        // TODO implement here
+        this.idHorario = idHorario;
     }
 
     /**
      * @return
      */
     public int getIdSolicitud() {
-        // TODO implement here
-        return 0;
+        return this.idSolicitud;
     }
 
     /**
      * @param idSolicitud
      */
     public void setIdSolicitud(int idSolicitud) {
-        // TODO implement here
+        this.idSolicitud = idSolicitud;
     }
 
     /**
      * @return
      */
     public java.time.LocalDate getFechaReserva() {
-        // TODO implement here
-        return null;
+        return this.fechaReserva;
     }
 
     /**
      * @param fechaReserva
      */
     public void setFechaReserva(java.time.LocalDate fechaReserva) {
-        // TODO implement here
+        this.fechaReserva = fechaReserva;
     }
 
     /**
      * @return
      */
     public java.time.LocalTime getHora() {
-        // TODO implement here
-        return null;
+        return this.hora;
     }
 
     /**
      * @param hora
      */
     public void setHora(java.time.LocalTime hora) {
-        // TODO implement here
+        this.hora = hora;
     }
 
     /**
      * @return
      */
     public String getEstado() {
-        // TODO implement here
-        return "";
+        return this.estado;
     }
 
     /**
      * @param estado
      */
     public void setEstado(String estado) {
-        // TODO implement here
+        this.estado = estado;
     }
 
     /**
@@ -143,7 +137,12 @@ public class ReservaBean {
      * @param estado
      */
     public ReservaBean(int idReserva, int idHorario, int idSolicitud, java.time.LocalDate fechaReserva, java.time.LocalTime hora, String estado) {
-        // TODO implement here
+        this.idReserva = idReserva;
+        this.idHorario = idHorario;
+        this.idSolicitud = idSolicitud;
+        this.fechaReserva = fechaReserva;
+        this.hora = hora;
+        this.estado = estado;
     }
 
 }

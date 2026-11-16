@@ -53,105 +53,98 @@ public class ConsultaBean {
      * @return
      */
     public int getIdConsulta() {
-        // TODO implement here
-        return 0;
+        return this.idConsulta;
     }
 
     /**
      * @param idConsulta
      */
     public void setIdConsulta(int idConsulta) {
-        // TODO implement here
+        this.idConsulta = idConsulta;
     }
 
     /**
      * @return
      */
     public int getIdHistoria() {
-        // TODO implement here
-        return 0;
+        return this.idHistoria;
     }
 
     /**
      * @param idHistoria
      */
     public void setIdHistoria(int idHistoria) {
-        // TODO implement here
+        this.idHistoria = idHistoria;
     }
 
     /**
      * @return
      */
     public int getIdCita() {
-        // TODO implement here
-        return 0;
+        return this.idCita;
     }
 
     /**
      * @param idCita
      */
     public void setIdCita(int idCita) {
-        // TODO implement here
+        this.idCita = idCita;
     }
 
     /**
      * @return
      */
     public int getIdMedico() {
-        // TODO implement here
-        return 0;
+        return this.idMedico;
     }
 
     /**
      * @param idMedico
      */
     public void setIdMedico(int idMedico) {
-        // TODO implement here
+        this.idMedico = idMedico;
     }
 
     /**
      * @return
      */
     public java.time.LocalDateTime getFecha() {
-        // TODO implement here
-        return null;
+        return this.fecha;
     }
 
     /**
      * @param fecha
      */
     public void setFecha(java.time.LocalDateTime fecha) {
-        // TODO implement here
+        this.fecha = fecha;
     }
 
     /**
      * @return
      */
     public String getMotivoConsulta() {
-        // TODO implement here
-        return "";
+        return this.motivoConsulta;
     }
 
     /**
      * @param motivoConsulta
      */
     public void setMotivoConsulta(String motivoConsulta) {
-        // TODO implement here
+        this.motivoConsulta = motivoConsulta;
     }
 
     /**
      * @return
      */
     public String getObservaciones() {
-        // TODO implement here
-        return "";
+        return this.observaciones;
     }
 
     /**
      * @param observaciones
      */
     public void setObservaciones(String observaciones) {
-        // TODO implement here
+        this.observaciones = observaciones;
     }
 
     /**
@@ -164,7 +157,13 @@ public class ConsultaBean {
      * @param observaciones
      */
     public ConsultaBean(int idConsulta, int idHistoria, int idCita, int idMedico, java.time.LocalDateTime fecha, String motivoConsulta, String observaciones) {
-        // TODO implement here
+        this.idConsulta = idConsulta;
+        this.idHistoria = idHistoria;
+        this.idCita = idCita;
+        this.idMedico = idMedico;
+        this.fecha = fecha;
+        this.motivoConsulta = motivoConsulta;
+        this.observaciones = observaciones;
     }
 
 }

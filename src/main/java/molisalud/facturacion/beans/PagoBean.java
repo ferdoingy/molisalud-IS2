@@ -48,90 +48,84 @@ public class PagoBean {
      * @return
      */
     public int getIdPago() {
-        // TODO implement here
-        return 0;
+        return this.idPago;
     }
 
     /**
      * @param idPago
      */
     public void setIdPago(int idPago) {
-        // TODO implement here
+        this.idPago = idPago;
     }
 
     /**
      * @return
      */
     public int getIdCita() {
-        // TODO implement here
-        return 0;
+        return this.idCita;
     }
 
     /**
      * @param idCita
      */
     public void setIdCita(int idCita) {
-        // TODO implement here
+        this.idCita = idCita;
     }
 
     /**
      * @return
      */
     public int getIdServicio() {
-        // TODO implement here
-        return 0;
+        return this.idServicio;
     }
 
     /**
      * @param idServicio
      */
     public void setIdServicio(int idServicio) {
-        // TODO implement here
+        this.idServicio = idServicio;
     }
 
     /**
      * @return
      */
     public java.time.LocalDateTime getFechaPago() {
-        // TODO implement here
-        return null;
+        return this.fechaPago;
     }
 
     /**
      * @param fechaPago
      */
     public void setFechaPago(java.time.LocalDateTime fechaPago) {
-        // TODO implement here
+        this.fechaPago = fechaPago;
     }
 
     /**
      * @return
      */
     public java.math.BigDecimal getMonto() {
-        // TODO implement here
-        return null;
+        return this.monto;
     }
 
     /**
      * @param monto
      */
     public void setMonto(java.math.BigDecimal monto) {
-        // TODO implement here
+        this.monto = monto;
     }
 
     /**
      * @return
      */
     public String getMetodoPago() {
-        // TODO implement here
-        return "";
+        return this.metodoPago;
     }
 
     /**
      * @param metodoPago
      */
     public void setMetodoPago(String metodoPago) {
-        // TODO implement here
+        this.metodoPago = metodoPago;
     }
 
     /**
@@ -143,7 +137,12 @@ public class PagoBean {
      * @param metodoPago
      */
     public PagoBean(int idPago, int idCita, int idServicio, java.time.LocalDateTime fechaPago, java.math.BigDecimal monto, String metodoPago) {
-        // TODO implement here
+        this.idPago = idPago;
+        this.idCita = idCita;
+        this.idServicio = idServicio;
+        this.fechaPago = fechaPago;
+        this.monto = monto;
+        this.metodoPago = metodoPago;
     }
 
 }

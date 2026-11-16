@@ -27,7 +27,13 @@
     </header>
     <main>
         <h2>Bienvenido</h2>
-        <p>Sesión iniciada correctamente. Los módulos se irán habilitando aquí.</p>
+        <p>Sesión iniciada correctamente.</p>
+        <ul>
+            <% String rolActual = usuario.getRol();
+               if ("Recepcionista".equals(rolActual) || "Médico".equals(rolActual) || "Administrador de la clínica".equals(rolActual)) { %>
+            <li><a href="<%= request.getContextPath() %>/horarios">Horarios médicos</a></li>
+            <% } %>
+        </ul>
     </main>
 </body>
 </html>

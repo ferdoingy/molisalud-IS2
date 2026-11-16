@@ -1,0 +1,6 @@
+<%!
+    private static String esc(Object o) {
+        if (o == null) return "";
+        return o.toString().replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
+    }
+%>

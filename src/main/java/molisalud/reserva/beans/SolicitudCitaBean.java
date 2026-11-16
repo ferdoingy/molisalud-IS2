@@ -53,105 +53,98 @@ public class SolicitudCitaBean {
      * @return
      */
     public int getIdSolicitud() {
-        // TODO implement here
-        return 0;
+        return this.idSolicitud;
     }
 
     /**
      * @param idSolicitud
      */
     public void setIdSolicitud(int idSolicitud) {
-        // TODO implement here
+        this.idSolicitud = idSolicitud;
     }
 
     /**
      * @return
      */
     public int getIdPaciente() {
-        // TODO implement here
-        return 0;
+        return this.idPaciente;
     }
 
     /**
      * @param idPaciente
      */
     public void setIdPaciente(int idPaciente) {
-        // TODO implement here
+        this.idPaciente = idPaciente;
     }
 
     /**
      * @return
      */
     public java.time.LocalDate getFechaSolicitud() {
-        // TODO implement here
-        return null;
+        return this.fechaSolicitud;
     }
 
     /**
      * @param fechaSolicitud
      */
     public void setFechaSolicitud(java.time.LocalDate fechaSolicitud) {
-        // TODO implement here
+        this.fechaSolicitud = fechaSolicitud;
     }
 
     /**
      * @return
      */
     public java.time.LocalDate getFechaEscogida() {
-        // TODO implement here
-        return null;
+        return this.fechaEscogida;
     }
 
     /**
      * @param fechaEscogida
      */
     public void setFechaEscogida(java.time.LocalDate fechaEscogida) {
-        // TODO implement here
+        this.fechaEscogida = fechaEscogida;
     }
 
     /**
      * @return
      */
     public java.time.LocalTime getHoraEscogida() {
-        // TODO implement here
-        return null;
+        return this.horaEscogida;
     }
 
     /**
      * @param horaEscogida
      */
     public void setHoraEscogida(java.time.LocalTime horaEscogida) {
-        // TODO implement here
+        this.horaEscogida = horaEscogida;
     }
 
     /**
      * @return
      */
     public String getMotivoConsulta() {
-        // TODO implement here
-        return "";
+        return this.motivoConsulta;
     }
 
     /**
      * @param motivoConsulta
      */
     public void setMotivoConsulta(String motivoConsulta) {
-        // TODO implement here
+        this.motivoConsulta = motivoConsulta;
     }
 
     /**
      * @return
      */
     public String getEstado() {
-        // TODO implement here
-        return "";
+        return this.estado;
     }
 
     /**
      * @param estado
      */
     public void setEstado(String estado) {
-        // TODO implement here
+        this.estado = estado;
     }
 
     /**
@@ -164,7 +157,13 @@ public class SolicitudCitaBean {
      * @param estado
      */
     public SolicitudCitaBean(int idSolicitud, int idPaciente, java.time.LocalDate fechaSolicitud, java.time.LocalDate fechaEscogida, java.time.LocalTime horaEscogida, String motivoConsulta, String estado) {
-        // TODO implement here
+        this.idSolicitud = idSolicitud;
+        this.idPaciente = idPaciente;
+        this.fechaSolicitud = fechaSolicitud;
+        this.fechaEscogida = fechaEscogida;
+        this.horaEscogida = horaEscogida;
+        this.motivoConsulta = motivoConsulta;
+        this.estado = estado;
     }
 
 }

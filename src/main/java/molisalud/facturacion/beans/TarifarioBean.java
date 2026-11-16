@@ -33,45 +33,42 @@ public class TarifarioBean {
      * @return
      */
     public int getIdServicio() {
-        // TODO implement here
-        return 0;
+        return this.idServicio;
     }
 
     /**
      * @param idServicio
      */
     public void setIdServicio(int idServicio) {
-        // TODO implement here
+        this.idServicio = idServicio;
     }
 
     /**
      * @return
      */
     public String getNombreServicio() {
-        // TODO implement here
-        return "";
+        return this.nombreServicio;
     }
 
     /**
      * @param nombreServicio
      */
     public void setNombreServicio(String nombreServicio) {
-        // TODO implement here
+        this.nombreServicio = nombreServicio;
     }
 
     /**
      * @return
      */
     public java.math.BigDecimal getPrecio() {
-        // TODO implement here
-        return null;
+        return this.precio;
     }
 
     /**
      * @param precio
      */
     public void setPrecio(java.math.BigDecimal precio) {
-        // TODO implement here
+        this.precio = precio;
     }
 
     /**
@@ -80,7 +77,9 @@ public class TarifarioBean {
      * @param precio
      */
     public TarifarioBean(int idServicio, String nombreServicio, java.math.BigDecimal precio) {
-        // TODO implement here
+        this.idServicio = idServicio;
+        this.nombreServicio = nombreServicio;
+        this.precio = precio;
     }
 
 }

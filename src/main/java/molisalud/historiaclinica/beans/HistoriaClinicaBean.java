@@ -38,60 +38,56 @@ public class HistoriaClinicaBean {
      * @return
      */
     public int getIdHistoria() {
-        // TODO implement here
-        return 0;
+        return this.idHistoria;
     }
 
     /**
      * @param idHistoria
      */
     public void setIdHistoria(int idHistoria) {
-        // TODO implement here
+        this.idHistoria = idHistoria;
     }
 
     /**
      * @return
      */
     public int getIdPaciente() {
-        // TODO implement here
-        return 0;
+        return this.idPaciente;
     }
 
     /**
      * @param idPaciente
      */
     public void setIdPaciente(int idPaciente) {
-        // TODO implement here
+        this.idPaciente = idPaciente;
     }
 
     /**
      * @return
      */
     public java.time.LocalDate getFecha() {
-        // TODO implement here
-        return null;
+        return this.fecha;
     }
 
     /**
      * @param fecha
      */
     public void setFecha(java.time.LocalDate fecha) {
-        // TODO implement here
+        this.fecha = fecha;
     }
 
     /**
      * @return
      */
     public String getAntecedentes() {
-        // TODO implement here
-        return "";
+        return this.antecedentes;
     }
 
     /**
      * @param antecedentes
      */
     public void setAntecedentes(String antecedentes) {
-        // TODO implement here
+        this.antecedentes = antecedentes;
     }
 
     /**
@@ -101,7 +97,10 @@ public class HistoriaClinicaBean {
      * @param antecedentes
      */
     public HistoriaClinicaBean(int idHistoria, int idPaciente, java.time.LocalDate fecha, String antecedentes) {
-        // TODO implement here
+        this.idHistoria = idHistoria;
+        this.idPaciente = idPaciente;
+        this.fecha = fecha;
+        this.antecedentes = antecedentes;
     }
 
 }

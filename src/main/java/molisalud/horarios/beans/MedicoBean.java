@@ -38,60 +38,56 @@ public class MedicoBean {
      * @return
      */
     public int getIdMedico() {
-        // TODO implement here
-        return 0;
+        return this.idMedico;
     }
 
     /**
      * @param idMedico
      */
     public void setIdMedico(int idMedico) {
-        // TODO implement here
+        this.idMedico = idMedico;
     }
 
     /**
      * @return
      */
     public String getNombres() {
-        // TODO implement here
-        return "";
+        return this.nombres;
     }
 
     /**
      * @param nombres
      */
     public void setNombres(String nombres) {
-        // TODO implement here
+        this.nombres = nombres;
     }
 
     /**
      * @return
      */
     public String getApellidos() {
-        // TODO implement here
-        return "";
+        return this.apellidos;
     }
 
     /**
      * @param apellidos
      */
     public void setApellidos(String apellidos) {
-        // TODO implement here
+        this.apellidos = apellidos;
     }
 
     /**
      * @return
      */
     public String getEspecialidad() {
-        // TODO implement here
-        return "";
+        return this.especialidad;
     }
 
     /**
      * @param especialidad
      */
     public void setEspecialidad(String especialidad) {
-        // TODO implement here
+        this.especialidad = especialidad;
     }
 
     /**
@@ -101,7 +97,10 @@ public class MedicoBean {
      * @param especialidad
      */
     public MedicoBean(int idMedico, String nombres, String apellidos, String especialidad) {
-        // TODO implement here
+        this.idMedico = idMedico;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.especialidad = especialidad;
     }
 
 }

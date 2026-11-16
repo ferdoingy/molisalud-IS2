@@ -38,60 +38,56 @@ public class RecetaBean {
      * @return
      */
     public int getIdReceta() {
-        // TODO implement here
-        return 0;
+        return this.idReceta;
     }
 
     /**
      * @param idReceta
      */
     public void setIdReceta(int idReceta) {
-        // TODO implement here
+        this.idReceta = idReceta;
     }
 
     /**
      * @return
      */
     public int getIdConsulta() {
-        // TODO implement here
-        return 0;
+        return this.idConsulta;
     }
 
     /**
      * @param idConsulta
      */
     public void setIdConsulta(int idConsulta) {
-        // TODO implement here
+        this.idConsulta = idConsulta;
     }
 
     /**
      * @return
      */
     public java.time.LocalDate getFecha() {
-        // TODO implement here
-        return null;
+        return this.fecha;
     }
 
     /**
      * @param fecha
      */
     public void setFecha(java.time.LocalDate fecha) {
-        // TODO implement here
+        this.fecha = fecha;
     }
 
     /**
      * @return
      */
     public String getIndicaciones() {
-        // TODO implement here
-        return "";
+        return this.indicaciones;
     }
 
     /**
      * @param indicaciones
      */
     public void setIndicaciones(String indicaciones) {
-        // TODO implement here
+        this.indicaciones = indicaciones;
     }
 
     /**
@@ -101,7 +97,10 @@ public class RecetaBean {
      * @param indicaciones
      */
     public RecetaBean(int idReceta, int idConsulta, java.time.LocalDate fecha, String indicaciones) {
-        // TODO implement here
+        this.idReceta = idReceta;
+        this.idConsulta = idConsulta;
+        this.fecha = fecha;
+        this.indicaciones = indicaciones;
     }
 
 }

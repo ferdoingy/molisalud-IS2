@@ -48,90 +48,84 @@ public class HorarioBean {
      * @return
      */
     public int getIdHorario() {
-        // TODO implement here
-        return 0;
+        return this.idHorario;
     }
 
     /**
      * @param idHorario
      */
     public void setIdHorario(int idHorario) {
-        // TODO implement here
+        this.idHorario = idHorario;
     }
 
     /**
      * @return
      */
     public int getIdMedico() {
-        // TODO implement here
-        return 0;
+        return this.idMedico;
     }
 
     /**
      * @param idMedico
      */
     public void setIdMedico(int idMedico) {
-        // TODO implement here
+        this.idMedico = idMedico;
     }
 
     /**
      * @return
      */
     public String getDiaSemana() {
-        // TODO implement here
-        return "";
+        return this.diaSemana;
     }
 
     /**
      * @param diaSemana
      */
     public void setDiaSemana(String diaSemana) {
-        // TODO implement here
+        this.diaSemana = diaSemana;
     }
 
     /**
      * @return
      */
     public java.time.LocalTime getHoraInicio() {
-        // TODO implement here
-        return null;
+        return this.horaInicio;
     }
 
     /**
      * @param horaInicio
      */
     public void setHoraInicio(java.time.LocalTime horaInicio) {
-        // TODO implement here
+        this.horaInicio = horaInicio;
     }
 
     /**
      * @return
      */
     public java.time.LocalTime getHoraFin() {
-        // TODO implement here
-        return null;
+        return this.horaFin;
     }
 
     /**
      * @param horaFin
      */
     public void setHoraFin(java.time.LocalTime horaFin) {
-        // TODO implement here
+        this.horaFin = horaFin;
     }
 
     /**
      * @return
      */
     public String getEstado() {
-        // TODO implement here
-        return "";
+        return this.estado;
     }
 
     /**
      * @param estado
      */
     public void setEstado(String estado) {
-        // TODO implement here
+        this.estado = estado;
     }
 
     /**
@@ -143,7 +137,12 @@ public class HorarioBean {
      * @param estado
      */
     public HorarioBean(int idHorario, int idMedico, String diaSemana, java.time.LocalTime horaInicio, java.time.LocalTime horaFin, String estado) {
-        // TODO implement here
+        this.idHorario = idHorario;
+        this.idMedico = idMedico;
+        this.diaSemana = diaSemana;
+        this.horaInicio = horaInicio;
+        this.horaFin = horaFin;
+        this.estado = estado;
     }
 
 }
