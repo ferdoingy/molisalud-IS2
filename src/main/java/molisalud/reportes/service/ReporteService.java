@@ -1,10 +1,11 @@
 package molisalud.reportes.service;
 
-import java.io.*;
-import java.util.*;
+import java.time.LocalDate;
+import java.util.ArrayList;
 
 /**
- * Implementa IReporteService. Las operaciones del contrato están definidas en la interfaz y la extensión Java genera sus implementaciones aquí. Mantener objDAO solo en esta clase. Implementar validaciones y delegación al DAO.
+ * Implementa IReporteService. Valida el periodo y delega al DAO.
+ * Los errores de regla se informan con IllegalArgumentException / IllegalStateException (mensaje apto para el usuario).
  */
 public class ReporteService implements IReporteService {
 
@@ -14,37 +15,34 @@ public class ReporteService implements IReporteService {
     public ReporteService() {
     }
 
-    /**
-     * 
-     */
     private molisalud.reportes.dao.ReporteDAO objDAO = new molisalud.reportes.dao.ReporteDAO();
 
-    /**
-     * @param fechaInicio 
-     * @param fechaFin
-     */
-    public void generarReporte(java.time.LocalDate fechaInicio, java.time.LocalDate fechaFin) {
-        // TODO implement here
+    private static void validarPeriodo(LocalDate fechaInicio, LocalDate fechaFin) {
+        if (fechaInicio == null || fechaFin == null) {
+            throw new IllegalArgumentException("Indique la fecha de inicio y la fecha de fin del periodo.");
+        }
+        if (fechaInicio.isAfter(fechaFin)) {
+            throw new IllegalArgumentException("La fecha de inicio no puede ser posterior a la fecha de fin.");
+        }
     }
 
-    /**
-     * @param fechaInicio 
-     * @param fechaFin 
-     * @return
-     */
-    public java.util.ArrayList<Object> consultarReporte(java.time.LocalDate fechaInicio, java.time.LocalDate fechaFin) {
-        // TODO implement here
-        return null;
+    /** Valida el periodo y comprueba que haya información que reportar. */
+    public void generarReporte(LocalDate fechaInicio, LocalDate fechaFin) {
+        validarPeriodo(fechaInicio, fechaFin);
+        objDAO.generarReporte(fechaInicio, fechaFin);
     }
 
-    /**
-     * @param datos
-     */
-    public void exportarReporte(java.util.ArrayList<Object> datos) {
-        // TODO implement here
+    /** @return citas, comprobantes e historias clínicas del periodo (en ese orden). */
+    public ArrayList<Object> consultarReporte(LocalDate fechaInicio, LocalDate fechaFin) {
+        validarPeriodo(fechaInicio, fechaFin);
+        return objDAO.consultarReporte(fechaInicio, fechaFin);
     }
 
-
-
-
+    /** Verifica que haya datos válidos que exportar. */
+    public void exportarReporte(ArrayList<Object> datos) {
+        if (datos == null || datos.isEmpty()) {
+            throw new IllegalArgumentException("No hay datos para exportar. Genere primero el reporte de un periodo con información.");
+        }
+        objDAO.exportarReporte(datos);
+    }
 }

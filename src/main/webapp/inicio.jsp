@@ -42,6 +42,9 @@
             <% if ("Cajero".equals(rolActual)) { %>
             <li><a href="<%= request.getContextPath() %>/facturacion">Facturación</a></li>
             <% } %>
+            <% if ("Administrador de la clínica".equals(rolActual)) { %>
+            <li><a href="<%= request.getContextPath() %>/reportes">Reportes administrativos</a></li>
+            <% } %>
         </ul>
     </main>
 </body>
