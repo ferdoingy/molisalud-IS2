@@ -2,7 +2,7 @@
 <%!
     private static String esc(String t) {
         if (t == null) return "";
-        return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace(""", "&quot;");
+        return t.replace("&", "&amp;").replace("<", "&lt;").replace(">", "&gt;").replace("\"", "&quot;");
     }
 %>
 <!DOCTYPE html>
