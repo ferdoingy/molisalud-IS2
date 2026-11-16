@@ -38,60 +38,56 @@ public class UsuarioBean {
      * @return
      */
     public int getIdUsuario() {
-        // TODO implement here
-        return 0;
+        return this.idUsuario;
     }
 
     /**
      * @param idUsuario
      */
     public void setIdUsuario(int idUsuario) {
-        // TODO implement here
+        this.idUsuario = idUsuario;
     }
 
     /**
      * @return
      */
     public String getNombreUsuario() {
-        // TODO implement here
-        return "";
+        return this.nombreUsuario;
     }
 
     /**
      * @param nombreUsuario
      */
     public void setNombreUsuario(String nombreUsuario) {
-        // TODO implement here
+        this.nombreUsuario = nombreUsuario;
     }
 
     /**
      * @return
      */
     public String getClave() {
-        // TODO implement here
-        return "";
+        return this.clave;
     }
 
     /**
      * @param clave
      */
     public void setClave(String clave) {
-        // TODO implement here
+        this.clave = clave;
     }
 
     /**
      * @return
      */
     public String getRol() {
-        // TODO implement here
-        return "";
+        return this.rol;
     }
 
     /**
      * @param rol
      */
     public void setRol(String rol) {
-        // TODO implement here
+        this.rol = rol;
     }
 
     /**
@@ -101,7 +97,10 @@ public class UsuarioBean {
      * @param rol
      */
     public UsuarioBean(int idUsuario, String nombreUsuario, String clave, String rol) {
-        // TODO implement here
+        this.idUsuario = idUsuario;
+        this.nombreUsuario = nombreUsuario;
+        this.clave = clave;
+        this.rol = rol;
     }
 
 }
